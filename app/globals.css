@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --forest: #1b4332;
+  --orange: #e76f2a;
+  --leaf: #52b788;
+  --gold: #c8953a;
+  --cream: #f8f4ee;
+}
+
+html,
+body {
+  background-color: var(--cream);
+  color: var(--forest);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background-color: var(--gold);
+  color: var(--cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
