@@ -1,15 +1,33 @@
-import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/require-admin";
 import SignOutButton from "./sign-out-button";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const admin = await requireAdmin();
 
-  // Middleware already redirects unauthenticated visitors, but a
-  // signed-in user with no profiles row (e.g. deleted mid-session)
-  // should still be bounced rather than see a broken shell.
+  // Middleware is the only thing that redirects unauthenticated
+  // visitors to /admin/login. If this layout's own session check ever
+  // disagreed with middleware's (e.g. a signed-in user with no
+  // profiles row, or a race between the two), redirecting again here
+  // could ping-pong the two auth checks against each other forever.
+  // So this renders an inline message instead of redirecting.
   if (!admin) {
-    redirect("/admin/login");
+    return (
+      <div className="min-h-dvh flex items-center justify-center bg-cream px-6 text-center">
+        <div>
+          <h1 className="font-display text-xl text-forest">Access denied</h1>
+          <p className="text-forest/60 text-[15px] mt-2 max-w-sm">
+            Your account isn&apos;t set up as an admin yet, or your session
+            expired.
+          </p>
+          <a
+            href="/admin/login"
+            className="inline-block mt-4 text-orange underline underline-offset-4"
+          >
+            Back to sign in
+          </a>
+        </div>
+      </div>
+    );
   }
 
   const roleLabel: Record<string, string> = {
