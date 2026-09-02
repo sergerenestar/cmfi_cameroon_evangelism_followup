@@ -1,4 +1,6 @@
 import { requireAdmin } from "@/lib/require-admin";
+import { getSupabaseServerComponentClient } from "@/lib/supabase/server";
+import { getSupabaseServerClient } from "@/lib/supabase-server";
 import SignOutButton from "./sign-out-button";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -11,6 +13,32 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   // could ping-pong the two auth checks against each other forever.
   // So this renders an inline message instead of redirecting.
   if (!admin) {
+    // TEMPORARY diagnostics — re-checks the same two steps requireAdmin()
+    // does, just to show which one is failing. Safe to remove once
+    // admin access is confirmed working.
+    const sessionClient = getSupabaseServerComponentClient();
+    const {
+      data: { user },
+    } = await sessionClient.auth.getUser();
+
+    let profileDebug = "no session — the login cookie isn't reaching this page.";
+    if (user) {
+      const adminClient = getSupabaseServerClient();
+      const { data: profile, error } = await adminClient
+        .from("profiles")
+        .select("id, email, role")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (error) {
+        profileDebug = `session OK (${user.email}, id ${user.id}), but the profiles lookup errored: ${error.message}`;
+      } else if (!profile) {
+        profileDebug = `session OK (${user.email}, id ${user.id}), but no profiles row has that id.`;
+      } else {
+        profileDebug = `session OK (${user.email}), profiles row found with role "${profile.role}" — role must be exactly super_admin/follow_up_coordinator/viewer.`;
+      }
+    }
+
     return (
       <div className="min-h-dvh flex items-center justify-center bg-cream px-6 text-center">
         <div>
@@ -18,6 +46,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <p className="text-forest/60 text-[15px] mt-2 max-w-sm">
             Your account isn&apos;t set up as an admin yet, or your session
             expired.
+          </p>
+          <p className="text-forest/40 text-xs mt-3 max-w-md font-mono break-all">
+            Debug: {profileDebug}
           </p>
           <a
             href="/admin/login"
