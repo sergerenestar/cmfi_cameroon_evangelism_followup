@@ -1,7 +1,7 @@
-# LCOW New Convert Campaign Form
+# CMFI Cameroon Evangelism Follow-up
 
 A mobile-first form for new converts to submit their information during
-LCOW evangelist campaigns. Built to handle high-concurrency submission
+CMFI Cameroon evangelist campaigns. Built to handle high-concurrency submission
 bursts (e.g. an altar call with thousands of people submitting within
 minutes) without a self-hosted server.
 

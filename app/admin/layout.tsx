@@ -21,7 +21,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   return (
     <div className="min-h-dvh flex flex-col md:flex-row bg-cream">
       <aside className="md:w-60 shrink-0 bg-forest text-cream px-5 py-6 flex flex-col">
-        <p className="text-xs tracking-wide text-gold">LCOW — CMFI Cameroon</p>
+        <p className="text-xs tracking-wide text-gold">CMFI Cameroon Evangelism Follow-up</p>
         <p className="font-display text-lg mt-1">Admin Portal</p>
 
         <nav className="mt-8 space-y-1 flex-1">

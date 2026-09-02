@@ -17,7 +17,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "LCOW — Tell Us What Happened Today",
+  title: "CMFI Cameroon Evangelism Follow-up — Tell Us What Happened Today",
   description:
     "Let's Change Our World — share your decision from today's campaign so a leader near you can walk with you.",
 };

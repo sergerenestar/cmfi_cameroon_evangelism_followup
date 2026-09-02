@@ -1,4 +1,4 @@
--- LCOW / CMFI Cameroon New Convert Campaign — Supabase schema
+-- CMFI Cameroon Evangelism Follow-up — New Convert Campaign Supabase schema
 -- Mirrors the organizers' official "Fiche de Suivi - Nouveaux Convertis"
 -- Run this once in the Supabase SQL editor (Project > SQL Editor > New query)
 

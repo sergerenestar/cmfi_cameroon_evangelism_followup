@@ -36,7 +36,7 @@ export default function AdminLogin() {
     <main className="min-h-dvh flex items-center justify-center bg-cream px-6">
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-5">
         <div>
-          <p className="text-sm tracking-wide text-orange">LCOW — CMFI Cameroon</p>
+          <p className="text-sm tracking-wide text-orange">CMFI Cameroon Evangelism Follow-up</p>
           <h1 className="font-display text-2xl text-forest mt-1">Admin sign in</h1>
         </div>
 

@@ -86,7 +86,7 @@ export const dict = {
     submit: "Save this record",
     submitting: "Saving…",
     privacyNote:
-      "This information is shared only with CMFI Cameroon and LCOW follow-up teams and is never sold or published.",
+      "This information is shared only with the CMFI Cameroon Evangelism Follow-up team and is never sold or published.",
     errWorkerName: "Please enter your name as the counselor filling this out.",
     errDecision: "Please choose the decision made today.",
     errGeneric: "We could not save this record. Please try again.",
@@ -167,7 +167,7 @@ export const dict = {
     submit: "Enregistrer cette fiche",
     submitting: "Enregistrement…",
     privacyNote:
-      "Ces informations sont partagées uniquement avec les équipes de suivi de CMFI Cameroun et LCOW, et ne sont jamais vendues ni publiées.",
+      "Ces informations sont partagées uniquement avec l'équipe de suivi évangélisation de CMFI Cameroun, et ne sont jamais vendues ni publiées.",
     errWorkerName: "Veuillez indiquer votre nom en tant qu'ouvrier remplissant cette fiche.",
     errDecision: "Veuillez choisir la décision prise ce jour.",
     errGeneric: "Nous n'avons pas pu enregistrer cette fiche. Veuillez réessayer.",
