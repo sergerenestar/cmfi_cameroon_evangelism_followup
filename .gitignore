@@ -4,3 +4,7 @@ node_modules
 .env.local
 .vercel
 *.log
+
+# Claude Code local state (personal, not shared with the team)
+.claude/settings.local.json
+CLAUDE.local.md
